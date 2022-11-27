@@ -1,8 +1,6 @@
-server:
-  port: 8888
 spring:
   profiles:
-    active: native
+    active: git
 
 ---
 spring:
@@ -11,13 +9,15 @@ spring:
     config:
       server:
         native:
-          search-locations: /home/java/cloud/profile/{application}/{profile}
+          search-locations: /home/java/cloud/profile/book-service/{application}/{profile}
 ---
 spring:
   profiles: git
   cloud:
-    server:
-      git:
-        uri: https://github.com/amgalan-sp/profile/
-        search-paths:
+    config:
+      server:
+        git:
+          uri: https://github.com/amgalan-sp/profile/
+          search-paths:
           - "book-service/{application}/{profile}"
+
